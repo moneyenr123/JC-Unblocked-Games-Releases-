@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JC Unblocked Games App Store</title>
+    
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="apple-touch-icon" href="../favicon.png">
+    <meta name="apple-mobile-web-app-title" content="JC Mini Games">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-color: #f8fafc;
+            --accent-color: #38bdf8;
+            --hover-color: #0ea5e9;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-top: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .app-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #1e293b, #334155);
+            border-radius: 18px;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        .app-title {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .app-category {
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 0.9rem;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>JC Unblocked Games</h1>
+        <p>Your library of premium apps and Websites Made By JC Unblocked Games</p>
+    </header>
+
+    <main class="app-grid">
+        <a href="path-to-your-game-1/index.html" class="app-card">
+            <div class="app-icon">🎮</div>
+            <div class="app-title">Space Explorer</div>
+            <div class="app-category">Action</div>
+        </a>
+
+        <a href="path-to-your-game-2/index.html" class="app-card">
+            <div class="app-icon">🧩</div>
+            <div class="app-title">Logic Box</div>
+            <div class="app-category">Puzzle</div>
+        </a>
+
+        <a href="path-to-your-game-3/index.html" class="app-card">
+            <div class="app-icon">🏎️</div>
+            <div class="app-title">Nitro Drift</div>
+            <div class="app-category">Racing</div>
+        </a>
+
+        <a href="path-to-your-game-4/index.html" class="app-card">
+            <div class="app-icon">🛠️</div>
+            <div class="app-title">Utility Tool</div>
+            <div class="app-category">App</div>
+        </a>
+    </main>
+
+    <footer>
+        &copy; 2026 JC Unblocked Games App Store
+    </footer>
+
+</body>
+</html>
