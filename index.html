@@ -19,260 +19,206 @@
             --ios-text: #ffffff;
             --ios-secondary: #8e8e93;
             --ios-border: #38383a;
+            --glass: rgba(255, 255, 255, 0.1);
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
             background-color: var(--ios-bg);
             color: var(--ios-text);
             margin: 0;
-            padding: 0 20px 100px 20px;
-            -webkit-tap-highlight-color: transparent;
+            padding: 0;
+            overflow-x: hidden;
         }
 
-        /* Header Styling */
-        header {
-            padding: 40px 0 20px 0;
+        /* Views */
+        .view { display: none; padding: 0 20px 120px 20px; }
+        .view.active { display: block; }
+
+        /* Navigation */
+        header { padding: 40px 0 10px 0; }
+        header h1 { font-size: 34px; font-weight: 800; margin: 0; }
+        .date { color: var(--ios-secondary); text-transform: uppercase; font-size: 13px; font-weight: 600; }
+
+        /* Carousel */
+        .carousel {
             display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 15px;
+            padding: 20px 0;
+            scrollbar-width: none;
         }
-
-        header h1 {
-            font-size: 34px;
-            font-weight: 700;
-            margin: 0;
-        }
-
-        .profile-icon {
-            width: 36px;
-            height: 36px;
-            background-color: var(--ios-blue);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-
-        /* Hero / Featured Card (JC Unblocked) */
-        .featured-card {
-            display: block;
-            text-decoration: none;
-            color: inherit;
-            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.6)), url('JC Unblocked Logo.png');
+        .carousel::-webkit-scrollbar { display: none; }
+        .carousel-item {
+            flex: 0 0 85%;
+            height: 220px;
+            border-radius: 20px;
             background-size: cover;
             background-position: center;
-            height: 400px;
-            border-radius: 16px;
+            scroll-snap-align: start;
             position: relative;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            margin-bottom: 30px;
-            overflow: hidden;
-            transition: transform 0.2s ease;
-        }
-
-        .featured-card:active {
-            transform: scale(0.97);
-        }
-
-        .featured-content {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
-        }
-
-        .featured-label {
-            text-transform: uppercase;
-            font-size: 13px;
-            font-weight: 600;
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 4px;
-        }
-
-        .featured-title {
-            font-size: 28px;
-            font-weight: 800;
-            margin-bottom: 8px;
-        }
-
-        /* App List Grid */
-        .section-title {
-            font-size: 22px;
-            font-weight: 700;
-            margin: 20px 0 15px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .see-all {
-            color: var(--ios-blue);
-            font-size: 16px;
-            font-weight: 400;
             text-decoration: none;
+            color: white;
+        }
+        .carousel-overlay {
+            position: absolute;
+            bottom: 0; padding: 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            width: 100%; box-sizing: border-box;
+            border-radius: 0 0 20px 20px;
         }
 
+        /* App Rows */
+        .section-title { font-size: 22px; font-weight: 700; margin: 25px 0 15px 0; }
         .app-row {
             display: flex;
             align-items: center;
             padding: 12px 0;
-            border-bottom: 1px solid var(--ios-border);
+            border-bottom: 0.5px solid var(--ios-border);
             text-decoration: none;
             color: inherit;
         }
-
-        .app-row:last-child {
-            border-bottom: none;
-        }
-
-        .app-icon-img {
-            width: 60px;
-            height: 60px;
-            border-radius: 13px;
-            background: var(--ios-card);
-            margin-right: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            border: 1px solid var(--ios-border);
-        }
-
-        .app-info {
-            flex-grow: 1;
-        }
-
-        .app-name {
-            font-size: 17px;
-            font-weight: 600;
-            margin-bottom: 2px;
-        }
-
-        .app-sub {
-            font-size: 13px;
-            color: var(--ios-secondary);
-        }
-
+        .app-icon { width: 62px; height: 62px; border-radius: 14px; margin-right: 15px; object-fit: cover; }
+        .app-info { flex: 1; }
+        .app-name { font-size: 17px; font-weight: 600; }
+        .app-sub { font-size: 13px; color: var(--ios-secondary); }
         .get-btn {
-            background-color: #323234;
-            color: var(--ios-blue);
-            font-weight: 700;
-            padding: 6px 24px;
-            border-radius: 20px;
-            text-transform: uppercase;
-            font-size: 14px;
-        }
-
-        /* Bottom Navigation */
-        nav.tab-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 85px;
-            background: rgba(28, 28, 30, 0.8);
-            backdrop-filter: blur(20px);
-            border-top: 1px solid var(--ios-border);
-            display: flex;
-            justify-content: space-around;
-            padding-top: 10px;
-            z-index: 100;
-        }
-
-        .tab-item {
-            text-align: center;
-            color: var(--ios-secondary);
+            background: #323234; color: var(--ios-blue);
+            padding: 6px 20px; border-radius: 20px;
+            font-weight: 700; text-transform: uppercase; font-size: 14px;
             text-decoration: none;
-            font-size: 10px;
         }
 
-        .tab-item.active {
-            color: var(--ios-blue);
+        /* App Detail Page */
+        .back-btn { color: var(--ios-blue); text-decoration: none; display: inline-block; margin-top: 20px; font-size: 17px; }
+        .detail-header { display: flex; align-items: flex-start; margin-top: 20px; gap: 20px; }
+        .detail-icon { width: 110px; height: 110px; border-radius: 22px; object-fit: cover; }
+        .iphone-notice {
+            background: #1c1c1e; border-left: 4px solid var(--ios-blue);
+            padding: 15px; border-radius: 12px; margin: 25px 0; font-size: 14px; line-height: 1.4;
         }
+        .screenshot-gallery {
+            display: flex; overflow-x: auto; gap: 12px; padding: 10px 0; scrollbar-width: none;
+        }
+        .screenshot-gallery img { width: 220px; border-radius: 15px; border: 1px solid var(--ios-border); }
+        .description { line-height: 1.5; color: #e1e1e1; font-size: 15px; white-space: pre-line; }
 
-        .tab-icon {
-            font-size: 24px;
-            margin-bottom: 4px;
-            display: block;
+        /* Tab Bar */
+        .tab-bar {
+            position: fixed; bottom: 0; width: 100%; height: 85px;
+            background: rgba(20,20,20,0.9); backdrop-filter: blur(20px);
+            display: flex; justify-content: space-around; padding-top: 10px;
+            border-top: 0.5px solid var(--ios-border);
         }
+        .tab { text-align: center; color: var(--ios-secondary); text-decoration: none; font-size: 10px; }
+        .tab.active { color: var(--ios-blue); }
+        .tab-icon { font-size: 24px; display: block; margin-bottom: 4px; }
     </style>
 </head>
 <body>
 
-    <header>
-        <div>
-            <span style="color: var(--ios-secondary); text-transform: uppercase; font-size: 13px; font-weight: 600;">Friday, March 13</span>
+    <div id="home-view" class="view active">
+        <header>
+            <span class="date">Friday, March 13</span>
             <h1>Games</h1>
-        </div>
-        <div class="profile-icon">JC</div>
-    </header>
+        </header>
 
-    <a href="https://sites.google.com/view/jcunblockedio" class="featured-card">
-        <div class="featured-content">
-            <div class="featured-label">Must Play</div>
-            <div class="featured-title">JC Unblocked</div>
-            <p style="margin: 0; opacity: 0.8;">The ultimate hub for unblocked entertainment.</p>
+        <div class="carousel">
+            <a href="https://sites.google.com/view/jcunblockedio" class="carousel-item" style="background-image: url('JC Unblocked Logo.png');">
+                <div class="carousel-overlay">
+                    <div style="font-size: 12px; opacity: 0.7;">TRENDING</div>
+                    <div style="font-size: 22px; font-weight: 800;">JC Unblocked</div>
+                </div>
+            </a>
+            <div class="carousel-item" style="background-image: url('app_logo.jpg'); cursor: pointer;" onclick="showAppDetail()">
+                <div class="carousel-overlay">
+                    <div style="font-size: 12px; opacity: 0.7;">NEW RELEASE</div>
+                    <div style="font-size: 22px; font-weight: 800;">JC Mini Games</div>
+                </div>
+            </div>
         </div>
-    </a>
 
-    <div class="section-title">
-        New Games
-        <a href="#" class="see-all">See All</a>
+        <div class="section-title">New Games</div>
+        <div class="app-list">
+            <div class="app-row">
+                <img src="JC Unblocked Logo.png" class="app-icon">
+                <div class="app-info">
+                    <div class="app-name">JC Unblocked</div>
+                    <div class="app-sub">Portal • Unblocked Games</div>
+                </div>
+                <a href="https://sites.google.com/view/jcunblockedio" class="get-btn">Get</a>
+            </div>
+
+            <div class="app-row" style="cursor: pointer;" onclick="showAppDetail()">
+                <img src="app_logo.jpg" class="app-icon">
+                <div class="app-info">
+                    <div class="app-name">JC Mini Games</div>
+                    <div class="app-sub">Collection • 40+ Games</div>
+                </div>
+                <a href="https://github.com/moneyenr123/JC-Unblocked-Games-Releases-/raw/main/JC%20Mini%20Games.apk" class="get-btn">Get</a>
+            </div>
+        </div>
     </div>
 
-    <div class="app-list">
-        <a href="#" class="app-row">
-            <div class="app-icon-img">🚀</div>
-            <div class="app-info">
-                <div class="app-name">Orbit Racer</div>
-                <div class="app-sub">High speed space racing</div>
+    <div id="detail-view" class="view">
+        <a href="#" class="back-btn" onclick="showHome()">❮ Games</a>
+        
+        <div class="detail-header">
+            <img src="app_logo.jpg" class="detail-icon">
+            <div style="flex: 1;">
+                <div style="font-size: 24px; font-weight: 700;">JC Mini Games</div>
+                <div style="color: var(--ios-blue); font-size: 15px; margin-bottom: 15px;">JC Unblocked Games</div>
+                <a href="https://github.com/moneyenr123/JC-Unblocked-Games-Releases-/raw/main/JC%20Mini%20Games.apk" class="get-btn" style="background: var(--ios-blue); color: white;">Get</a>
             </div>
-            <div class="get-btn">Get</div>
-        </a>
+        </div>
 
-        <a href="#" class="app-row">
-            <div class="app-icon-img">⚔️</div>
-            <div class="app-info">
-                <div class="app-name">Pixel Quest</div>
-                <div class="app-sub">Retro RPG Adventure</div>
-            </div>
-            <div class="get-btn">Get</div>
-        </a>
+        <div class="iphone-notice">
+            <strong>iPhone Users:</strong> Go to <span style="color: var(--ios-blue)">moneyenr123.github.io/JC-Mini-Games</span>, tap the Share icon, and select <strong>"Add to Home Screen"</strong>.
+        </div>
 
-        <a href="#" class="app-row">
-            <div class="app-icon-img">🧩</div>
-            <div class="app-info">
-                <div class="app-name">Block Logic</div>
-                <div class="app-sub">Brain-teasing puzzles</div>
-            </div>
-            <div class="get-btn">Get</div>
-        </a>
+        <div class="screenshot-gallery">
+            <img src="Screenshot_20260311-064657 (2).png">
+            <img src="Screenshot_20260311-064621.png">
+            <img src="Screenshot_20260311-064558.png">
+            <img src="Screenshot_20260311-064443~2.png">
+            <img src="Screenshot_20260311-064320 (2).png">
+        </div>
+
+        <div class="section-title">Description</div>
+        <div class="description">
+            Dive into a cosmic world of endless entertainment with JC Mini Games! 
+            
+            Whether you’re a fan of strategy, puzzles, board games, or high-speed action, our massive collection has something for everyone. 
+
+            • Classic Brain Teasers: 2048, Sudoku, Minesweeper, Nonograms.
+            • Board Game Legends: Chess, Checkers, Backgammon, Ludo.
+            • Arcade & Reflex: Flappy Bird, Snake, Whack-a-Mole.
+            • Strategy & Puzzles: Match 3, Mazes, Sokoban.
+            • Multiplayer Fun: Tic Tac Toe, Connect Four.
+
+            Download now and start your journey through the galaxy of gaming!
+        </div>
     </div>
 
     <nav class="tab-bar">
-        <a href="#" class="tab-item">
-            <span class="tab-icon">📑</span>
-            Today
-        </a>
-        <a href="#" class="tab-item active">
-            <span class="tab-icon">🎮</span>
-            Games
-        </a>
-        <a href="#" class="tab-item">
-            <span class="tab-icon">📱</span>
-            Apps
-        </a>
-        <a href="#" class="tab-item">
-            <span class="tab-icon">🕹️</span>
-            Arcade
-        </a>
-        <a href="#" class="tab-item">
-            <span class="tab-icon">🔍</span>
-            Search
-        </a>
+        <a href="#" class="tab"><span class="tab-icon">📑</span>Today</a>
+        <a href="#" class="tab active"><span class="tab-icon">🎮</span>Games</a>
+        <a href="#" class="tab"><span class="tab-icon">📱</span>Apps</a>
+        <a href="#" class="tab"><span class="tab-icon">🔍</span>Search</a>
     </nav>
 
+    <script>
+        function showAppDetail() {
+            document.getElementById('home-view').classList.remove('active');
+            document.getElementById('detail-view').classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function showHome() {
+            document.getElementById('detail-view').classList.remove('active');
+            document.getElementById('home-view').classList.add('active');
+        }
+    </script>
 </body>
 </html>
